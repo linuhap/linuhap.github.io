@@ -287,21 +287,27 @@
   
 
   
-  <div id="SOHUCS" sid="hello-world" ></div> 
-<script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-    window.changyan.api.config({
-        appid: "cytrKx7Xe",
-        conf: "true"
-    });
-</script>
-</script>
-  
   
   
 
   
 
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2018/01/31/hello-world/",
+  owner: 'linuhap',
+  repo: 'linuhap.github.io',
+  oauth: {
+    client_id: '9728602d3396fc231521',
+    client_secret: '8259e2a3e95b14bc5b1dec42b0c851e844ee6b85',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
   
 
 
