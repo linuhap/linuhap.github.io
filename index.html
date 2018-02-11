@@ -172,7 +172,7 @@
         <blockquote>
 <p>图片内容部分摘自网络</p>
 </blockquote>
-<h2 id="计算机网络包如下图所示："><a href="#计算机网络包如下图所示：" class="headerlink" title="计算机网络包如下图所示："></a>计算机网络包如下图所示：</h2><p><img src="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/11/TCP-IP%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93/tcpip.png?raw=true" alt="TCP/IP"><br></p>
+<h2 id="计算机网络包如下图所示："><a href="#计算机网络包如下图所示：" class="headerlink" title="计算机网络包如下图所示："></a>计算机网络包如下图所示：</h2><p><img src="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/11/TCP-IP%E8%A6%81%E7%82%B9%E6%80%BB%E7%BB%93/tcpip.png?raw=true" alt="TCP/IP"><br>
         
           <a class="article-more-a" href="2018/02/11/TCP-IP要点总结/#more">more >></a>
         
@@ -266,6 +266,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -325,7 +336,7 @@
 <p>战果出炉 || 国服学院夺得本届研究生篮球赛冠军<br>        5月14日，在烈日炎炎的午后，实力非凡的国服学院和教育学院踏入了总决赛的场馆，场边两队拉起来横幅，啦啦队也已经蓄势待发，场边音响响起了背景音乐《相信自己》。这一次，冠军又将花落谁家？</p>
 </blockquote>
 <p>开场教育学院球员便对国服球员进行了一次大动作犯规，火药味十足。但国服凭借着严密的防守，精准的投篮，行云流水的配合，打出来一波10比0的小高潮。第一节结束时，国服学院以13:2的大优势领先于教育学院。</p>
-<p>第二节开始后国服学院派上轮换阵容，教育学院做出调整后利用稳定的中投，进攻有所好转，逐渐把比分拉近。但心急如焚在场下休息的30号球员竟步入场进大声指挥教育学院进攻和防守。本节结束时教育学院仍以14:16落后两分。<br></p>
+<p>第二节开始后国服学院派上轮换阵容，教育学院做出调整后利用稳定的中投，进攻有所好转，逐渐把比分拉近。但心急如焚在场下休息的30号球员竟步入场进大声指挥教育学院进攻和防守。本节结束时教育学院仍以14:16落后两分。<br>
         
           <a class="article-more-a" href="2018/02/07/2017篮球赛回顾/#more">more >></a>
         
@@ -402,18 +413,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="苏宁总部"><a href="#苏宁总部" class="headerlink" title="苏宁总部"></a>苏宁总部</h3><p>1.GLSurfaceView、SurfaceView和View的区别</p>
-<p>2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler</p>
-<p>3.ANR怎么发生，如何解决</p>
+        <!-- toc -->
+<ul>
+<li><a href="#苏宁总部">苏宁总部</a></li>
+<li><a href="#同花顺">同花顺</a></li>
+</ul>
+<!-- tocstop -->
+<h3><span id="苏宁总部">苏宁总部</span><a href="#苏宁总部" class="header-anchor">#</a></h3><h4><span id="1glsurfaceview-surfaceview和view的区别">1.GLSurfaceView、SurfaceView和View的区别</span><a href="#1glsurfaceview-surfaceview和view的区别" class="header-anchor">#</a></h4><h4><span id="2android主线程是什么子线程和主线程如何交互子线程使用handler">2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler</span><a href="#2android主线程是什么子线程和主线程如何交互子线程使用handler" class="header-anchor">#</a></h4><p>两种方式，参考：<a href="https://www.jianshu.com/p/225de436d93c" target="_blank" rel="noopener">https://www.jianshu.com/p/225de436d93c</a></p>
+<p>1</p>
+<pre><code>new Thread(){
+@Override
+public void run() {        
+       Looper.prepare(); //获取当前线程的Looper，并prepare();
+       mHandler = new Handler() {           
+           @Override          
+           public void handleMessage(Message msg) {                
+               //do someting          
+           }        
+       };        
+       mHandler.sendEmptyMessage(0);   
+       Looper.loop(); //looper开始处理消息。
+   }
+}.start();
+</code></pre><p>2</p>
+<pre><code>new Thread(){   
+   @Override    
+   public void run() {        
+      mHandler = new Handler(getMainLooper()) { //直接使用主线程的Looper
+           @Override          
+           public void handleMessage(Message msg) {                
+               // do something           
+           }        
+       };        
+       handler.sendEmptyMessage(0);   
+  }
+}.start();
+</code></pre><p>3.ANR怎么发生，如何解决</p>
 <p>4.JVM垃圾回收机制</p>
 <p>5.数据库事务，范式</p>
 <p>6.网络分层，HTTPS</p>
 <p>7.TCP为什么是三次握手，不是两次或者四次5</p>
 <p>8.什么是死锁，银行家算法</p>
 <p>9.算法。A数组元素不同，计算B数组中元素属于A的个数。A和B数据量很大，设计算法复杂度低的算法。算法的时间复杂度是多少</p>
-<h3 id="同花顺"><a href="#同花顺" class="headerlink" title="同花顺"></a>同花顺</h3><p>1.ArrayList内部实现原理，添加一个元素的原理，如何扩增</p>
+<h3><span id="同花顺">同花顺</span><a href="#同花顺" class="header-anchor">#</a></h3><p>1.ArrayList内部实现原理，添加一个元素的原理，如何扩增</p>
 <p>2.HashMap原理，如何实现HashMap有序</p>
+<p>查看HashMap源码，内部一个数组；数组元素是链表的头结点（hash冲突是使用的链表法）。有序HashMap使用LinkedHashMap。</p>
 <p>3.Java的IO流</p>
+<p>字符流：Reader、Writer子类</p>
+<p>字节流：InputStream、OutputStream子类</p>
 <p>4.如何自定义控件</p>
 <p>5.Android动画分类，有什么不同</p>
 <p>6.Android线程间通信</p>
@@ -481,9 +528,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-头像无法显示，获文章显示更多时头像消失"><a href="#1-头像无法显示，获文章显示更多时头像消失" class="headerlink" title="1.头像无法显示，获文章显示更多时头像消失"></a>1.头像无法显示，获文章显示更多时头像消失</h2><p>图片放在 Hexo\public\img 路径下<br>编辑themes/yilia/_config.yml头像设置项为（注意替换yourname和imagename）：<br>avatar: <a href="https://yourname.github.io/img/imagename.jpg" target="_blank" rel="noopener">https://yourname.github.io/img/imagename.jpg</a></p>
-<h2 id="2-头像显示不全"><a href="#2-头像显示不全" class="headerlink" title="2.头像显示不全"></a>2.头像显示不全</h2><p>使用纵横比为1:1，或者纵向长于横向的图片</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>我的博客使用评论控件是gitment<br>计数控件是不蒜子</p>
+        <h2><span id="1头像无法显示获文章显示更多时头像消失">1.头像无法显示，获文章显示更多时头像消失</span><a href="#1头像无法显示获文章显示更多时头像消失" class="header-anchor">#</a></h2><p>图片放在 Hexo\public\img 路径下<br>编辑themes/yilia/_config.yml头像设置项为（注意替换yourname和imagename）：<br>avatar: <a href="https://yourname.github.io/img/imagename.jpg" target="_blank" rel="noopener">https://yourname.github.io/img/imagename.jpg</a></p>
+<h2><span id="2头像显示不全">2.头像显示不全</span><a href="#2头像显示不全" class="header-anchor">#</a></h2><p>使用纵横比为1:1，或者纵向长于横向的图片</p>
+<h2><span id="其他">其他</span><a href="#其他" class="header-anchor">#</a></h2><p>我的博客使用评论控件是gitment<br>计数控件是不蒜子</p>
 
       
 
@@ -559,13 +606,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h2><span id="quick-start">Quick Start</span><a href="#quick-start" class="header-anchor">#</a></h2><h3><span id="create-a-new-post">Create a new post</span><a href="#create-a-new-post" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h3><span id="run-server">Run server</span><a href="#run-server" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h3><span id="generate-static-files">Generate static files</span><a href="#generate-static-files" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span><a href="#deploy-to-remote-sites" class="header-anchor">#</a></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
       
@@ -704,15 +751,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
             
             <div class="clearfix"></div>

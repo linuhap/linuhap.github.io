@@ -9,6 +9,7 @@
   <title>为什么函数重载不可以根据返回类型区分 | just4fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="为什么函数重载不可以根据返回类型区分">
 <meta property="og:url" content="https://github.com/linuhap/linuhap.github.io/2018/02/08/为什么函数重载不可以根据返回类型区分/index.html">
@@ -16,7 +17,7 @@
 <meta property="og:description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8D%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%86/img1.JPG?raw=true">
-<meta property="og:updated_time" content="2018-02-08T12:12:11.098Z">
+<meta property="og:updated_time" content="2018-02-11T07:45:09.317Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为什么函数重载不可以根据返回类型区分">
 <meta name="twitter:description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
@@ -215,6 +216,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -436,15 +448,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
             
             <div class="clearfix"></div>
