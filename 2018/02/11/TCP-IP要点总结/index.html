@@ -6,21 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/linuhap/linuhap.github.io">
-  <title>为什么函数重载不可以根据返回类型区分 | just4fun</title>
+  <title>TCP/IP要点总结 | just4fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
+  <meta name="description" content="图片内容部分摘自网络  ##计算机网络包如下图所示： ##保留IP地址 ###1.保留地址的分配 根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公用地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。   一个机构网络要连入Internet，必须申请公用IP地址。但是考虑到网络安">
+<meta name="keywords" content="网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么函数重载不可以根据返回类型区分">
-<meta property="og:url" content="https://github.com/linuhap/linuhap.github.io/2018/02/08/为什么函数重载不可以根据返回类型区分/index.html">
+<meta property="og:title" content="TCP&#x2F;IP要点总结">
+<meta property="og:url" content="https://github.com/linuhap/linuhap.github.io/2018/02/11/TCP-IP要点总结/index.html">
 <meta property="og:site_name" content="just4fun">
-<meta property="og:description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
+<meta property="og:description" content="图片内容部分摘自网络  ##计算机网络包如下图所示： ##保留IP地址 ###1.保留地址的分配 根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公用地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。   一个机构网络要连入Internet，必须申请公用IP地址。但是考虑到网络安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8D%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%86/img1.JPG?raw=true">
-<meta property="og:updated_time" content="2018-02-08T12:12:11.098Z">
+<meta property="og:updated_time" content="2018-02-11T05:33:53.881Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为什么函数重载不可以根据返回类型区分">
-<meta name="twitter:description" content="本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。   图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合 再看看这篇博文:http://blog.csdn.net/tjiyu/article/details/53891813 从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常">
-<meta name="twitter:image" content="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8D%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%86/img1.JPG?raw=true">
+<meta name="twitter:title" content="TCP&#x2F;IP要点总结">
+<meta name="twitter:description" content="图片内容部分摘自网络  ##计算机网络包如下图所示： ##保留IP地址 ###1.保留地址的分配 根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公用地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。   一个机构网络要连入Internet，必须申请公用IP地址。但是考虑到网络安">
   
     <link rel="alternative" href="/atom.xml" title="just4fun" type="application/atom+xml">
   
@@ -152,20 +151,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-为什么函数重载不可以根据返回类型区分" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-TCP-IP要点总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      为什么函数重载不可以根据返回类型区分
+      TCP/IP要点总结
     </h1>
   
 
         
         <a href="" class="archive-article-date">
-  	<time datetime="2018-02-08T10:49:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-08</time>
+  	<time datetime="2018-02-11T05:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-11</time>
 </a>
         
 		
@@ -178,43 +177,44 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>本来是在知乎上回答的，不知道是没有通过还是什么原因在知乎上显示不出来。现在还是把个人的理解写在自己的博客里。</p>
+<p>图片内容部分摘自网络</p>
 </blockquote>
-<p><img src="https://github.com/linuhap/linuhap.github.io/blob/master/2018/02/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8D%E5%8F%AF%E4%BB%A5%E6%A0%B9%E6%8D%AE%E8%BF%94%E5%9B%9E%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%86/img1.JPG?raw=true" alt="书中截图"></p>
-<p>图片引自《深入理解Java虚拟机:JVM高级特性与最佳实践》6.3.6节 方法表集合</p>
-<p>再看看这篇博文:<a href="http://blog.csdn.net/tjiyu/article/details/53891813" target="_blank" rel="noopener">http://blog.csdn.net/tjiyu/article/details/53891813</a></p>
-<p>从博主的操作中可以看出，Class文件中同名、同参数、不同返回值的方法可以正常运行。</p>
-<p>那为什么Java文件中不可以呢：因为Java语言规范的规定，所以编译时会出现错误。</p>
-<p>那为什么Class文件可以跑呢：因为Java虚拟机规范与Java规范不同，两者是分开定义的。</p>
+<p>##计算机网络包如下图所示：<br><img src="" alt="TCP/IP"></p>
+<p>##保留IP地址</p>
+<p>###1.保留地址的分配</p>
+<p>根据用途和安全性级别的不同，IP地址还可以大致分为两类：公共地址和私有地址。公用地址在Internet中使用，可以在Internet中随意访问。私有地址只能在内部网络中使用，只有通过代理服务器才能与Internet通信。  </p>
+<p>一个机构网络要连入Internet，必须申请公用IP地址。但是考虑到网络安全和内部实验等特殊情况，在IP地址中专门保留了三个区域作为私有地址，其地址范围如下：</p>
+<p>10.0.0.0/8: 10.0.0.0 - 10.255.255.255</p>
+<p>172.16.0.0/12: 172.16.0.0 - 172.31.255.255</p>
+<p>192.168.0.0/16: 192.168.0.0 - 192.168.255.255</p>
+<p>使用保留地址的网络只能在内部进行通信，而不能与其他网络互连。因为本网络中的保留地址同样也可能被其它网络使用，如果进行网络互连，那么寻找路由时就会因为地址的不唯一而出现问题。但是这些使用保留地址的网络可以通过将本网络内的保留地址翻译转换成公共地址的方式实现与外部网络的互连。这也是保证网络安全的重要方法之一。</p>
+<p>###2.特殊IP地址(保留IP地址)介绍<br>就像我们每个人都有一个身份证号码一样，网络里的每台电脑(更确切地说，是每一个设备的网络接口)都有一个IP地址用于标示自己。我们可能都知道这些地址由四个字节组成，用点分十进制表示以及它们的A，B，C分类等，然而，在总数大约为四十多亿个可用IP 地址里，你知道下面一些常见的有特殊意义地址吗？我们一起来看看吧：</p>
+<p>####一、0.0.0.0<br>严格说来，0.0.0.0已经不是一个真正意义上的IP地址了。它表示的是这样一个集合：所有不清楚的主机和目的网络。这里的“不清楚”是指在本机的路由表里没有特定条目指明如何到达。对本机来说，它就是一个“收容所”，所有不认识的“三无”人员，一 律送进去。如果你在网络设置中设置了缺省网关，那么Windows系统会自动产生一个目的地址为0.0.0.0的缺省路由。</p>
+<p>####二、255.255.255.255<br>限制广播地址。对本机来说，这个地址指本网段内(同一广播域)的所有主机。如果翻译成人类的语言，应该是这样：“这个房间里的所有人都注意了！”这个地址不能被路由器转发。</p>
+<p>####三、127.0.0.1<br>本机地址，主要用于测试。用汉语表示，就是“我自己”。在Windows系统中，这个地址有一个别名“Localhost”。寻址这样一个地址，是不能把它发到网络接口的。除非出错，否则在传输介质上永远不应该出现目的地址为“127.0.0.1”的 数据包。</p>
+<p>####四、224.0.0.1<br>组播地址，注意它和广播的区别。从224.0.0.0到239.255.255.255都是这样的地址。224.0.0.1特指所有主机，224.0.0.2特指所有路由器。这样的地址多用于一些特定的程序以及多媒体程序。如果你的主机开启了IRDP (Internet路由发现协议，使用组播功能)功能，那么你的主机路由表中应该有这样一条路由。</p>
+<p>####五、169.254.x.x<br>如果你的主机使用了DHCP功能自动获得一个IP地址，那么当你的DHCP服务器发生故障，或响应时间太长而超出了一个系统规定的时间，Wingdows系统会为你分配这样一个地址。如果你发现你的主机IP地址是一个诸如此类的地址，很不幸，十有八九 是你的网络不能正常运行了。</p>
+<p>####六、10.x.x.x、172.16.x.x～172.31.x.x、192.168.x.x<br>私有地址，这些地址被大量用于企业内部网络中。一些宽带路由器，也往往使用192.168.1.1作为缺省地址。私有网络由于不与外部互连，因而可能使用随意的IP地址。保留这样的地址供其使用是为了避免以后接入公网时引起地址混乱。使用私有地址的私 有网络在接入Internet时，要使用地址翻译(NAT)，将私有地址翻译成公用合法地址。在Internet上，这类地址是不能出现的。</p>
+<p>对一台网络上的主机来说，它可以正常接收的合法目的网络地址有三种：本机的IP地址、广播地址以及组播地址。</p>
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -265,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/linuhap/linuhap.github.io/2018/02/08/为什么函数重载不可以根据返回类型区分/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/linuhap/linuhap.github.io/2018/02/11/TCP-IP要点总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -279,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="../../11/TCP-IP要点总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          TCP/IP要点总结
-        
-      </div>
-    </a>
   
-  
-    <a href="../../07/2017篮球赛回顾/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">2017篮球赛回顾</div>
+    <a href="../../08/为什么函数重载不可以根据返回类型区分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">为什么函数重载不可以根据返回类型区分</div>
       <i class="icon-circle-right"></i>
     </a>
   
