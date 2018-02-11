@@ -172,10 +172,10 @@
         <blockquote>
 <p>看网站上对LinkedHashMap这样介绍：LinkedHashMap是HashMap的子类，与HashMap有着同样的存储结构，但它加入了一个双向链表的头结点，将所有put到LinkedHashmap的节点一一串成了一个双向循环链表，因此它保留了节点插入的顺序。</p>
 </blockquote>
-<p>看到这样的介绍我凌乱了，HashMap中的Node指向下一个节点的指针指向了双向循环链表中的元素，这不是全乱了。看了源码，才知道自己too young too simple。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//LinkedHashMap中的Entry，表示加入的一个节点</span><br><span class="line">   static class Entry&lt;K,V&gt; extends HashMap.Node&lt;K,V&gt; &#123;</span><br><span class="line">       Entry&lt;K,V&gt; before, after;</span><br><span class="line">       Entry(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">           super(hash, key, value, next);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">//HashMap中的Node</span><br><span class="line">   static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</span><br><span class="line">       final int hash;</span><br><span class="line">       final K key;</span><br><span class="line">       V value;</span><br><span class="line">       Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">       Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">           this.hash = hash;</span><br><span class="line">           this.key = key;</span><br><span class="line">           this.value = value;</span><br><span class="line">           this.next = next;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final K getKey()        &#123; return key; &#125;</span><br><span class="line">       public final V getValue()      &#123; return value; &#125;</span><br><span class="line">       public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</span><br><span class="line"></span><br><span class="line">       public final int hashCode() &#123;</span><br><span class="line">           return Objects.hashCode(key) ^ Objects.hashCode(value);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final V setValue(V newValue) &#123;</span><br><span class="line">           V oldValue = value;</span><br><span class="line">           value = newValue;</span><br><span class="line">           return oldValue;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final boolean equals(Object o) &#123;</span><br><span class="line">           if (o == this)</span><br><span class="line">               return true;</span><br><span class="line">           if (o instanceof Map.Entry) &#123;</span><br><span class="line">               Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">               if (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">                   Objects.equals(value, e.getValue()))</span><br><span class="line">                   return true;</span><br><span class="line">           &#125;</span><br><span class="line">           return false;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>从代码可以看出，节点中next没有变，只是在此基础上加入了before、after，来记录LinkedHashMap在HashMap基础上加入的双向链表中的节点。</p>
-
+<p>看到这样的介绍我凌乱了，HashMap中的Node指向下一个节点的指针指向了双向循环链表中的元素，这不是全乱了。看了源码，才知道自己too young too simple。<br>
+        
+          <a class="article-more-a" href="2018/02/12/LinkedHashMap小记/#more">more >></a>
+        
       
 
       
@@ -502,35 +502,8 @@
 <h3><span id="苏宁总部">苏宁总部</span></h3><p>1.GLSurfaceView、SurfaceView和View的区别</p>
 <p>2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler</p>
 <p>两种方式，参考：<a href="https://www.jianshu.com/p/225de436d93c" target="_blank" rel="noopener">https://www.jianshu.com/p/225de436d93c</a></p>
-<p>1</p>
-<pre><code>new Thread(){
-@Override
-public void run() {        
-       Looper.prepare(); //获取当前线程的Looper，并prepare();
-       mHandler = new Handler() {           
-           @Override          
-           public void handleMessage(Message msg) {                
-               //do someting          
-           }        
-       };        
-       mHandler.sendEmptyMessage(0);   
-       Looper.loop(); //looper开始处理消息。
-   }
-}.start();
-</code></pre><p>2</p>
-<pre><code>new Thread(){   
-   @Override    
-   public void run() {        
-      mHandler = new Handler(getMainLooper()) { //直接使用主线程的Looper
-           @Override          
-           public void handleMessage(Message msg) {                
-               // do something           
-           }        
-       };        
-       handler.sendEmptyMessage(0);   
-  }
-}.start();
-</code></pre><p>3.ANR怎么发生，如何解决</p>
+<p>1<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">          Looper.prepare(); <span class="comment">//获取当前线程的Looper，并prepare();</span></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;           </span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">//do someting          </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          mHandler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">          Looper.loop(); <span class="comment">//looper开始处理消息。</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;.start();</span><br></pre></td></tr></table></figure><br>2<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;   </span><br><span class="line">      <span class="meta">@Override</span>    </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">         mHandler = <span class="keyword">new</span> Handler(getMainLooper()) &#123; <span class="comment">//直接使用主线程的Looper</span></span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">// do something           </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          handler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">     &#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure></p>
+<p>3.ANR怎么发生，如何解决</p>
 <p>4.JVM垃圾回收机制</p>
 <p>5.数据库事务，范式</p>
 <p>6.网络分层，HTTPS</p>
@@ -840,15 +813,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
