@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://github.com/linuhap/linuhap.github.io">
   <title>春招Android汇总 | just4fun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c 11234567891011121314new Thread()&amp;#123;@Overridepublic void">
+  <meta name="description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="春招Android汇总">
 <meta property="og:url" content="https://github.com/linuhap/linuhap.github.io/2018/02/05/春招Android汇总/index.html">
 <meta property="og:site_name" content="just4fun">
-<meta property="og:description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c 11234567891011121314new Thread()&amp;#123;@Overridepublic void">
+<meta property="og:description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-11T16:43:59.096Z">
+<meta property="og:updated_time" content="2018-02-12T15:01:16.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="春招Android汇总">
-<meta name="twitter:description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c 11234567891011121314new Thread()&amp;#123;@Overridepublic void">
+<meta name="twitter:description" content="苏宁总部 同花顺   苏宁总部1.GLSurfaceView、SurfaceView和View的区别 2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler 两种方式，参考：https://www.jianshu.com/p/225de436d93c">
   
     <link rel="alternative" href="/atom.xml" title="just4fun" type="application/atom+xml">
   
@@ -183,14 +183,15 @@
 <!-- tocstop -->
 <h3><span id="苏宁总部">苏宁总部</span></h3><p>1.GLSurfaceView、SurfaceView和View的区别</p>
 <p>2.Android主线程是什么，子线程和主线程如何交互,子线程使用Handler</p>
-<p>两种方式，参考：<a href="https://www.jianshu.com/p/225de436d93c" target="_blank" rel="noopener">https://www.jianshu.com/p/225de436d93c</a></p>
-<p>1<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">          Looper.prepare(); <span class="comment">//获取当前线程的Looper，并prepare();</span></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;           </span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">//do someting          </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          mHandler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">          Looper.loop(); <span class="comment">//looper开始处理消息。</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;.start();</span><br></pre></td></tr></table></figure><br>2<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;   </span><br><span class="line">      <span class="meta">@Override</span>    </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">         mHandler = <span class="keyword">new</span> Handler(getMainLooper()) &#123; <span class="comment">//直接使用主线程的Looper</span></span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">// do something           </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          handler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">     &#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure></p>
+<p>两种方式，参考：<a href="https://www.jianshu.com/p/225de436d93c" target="_blank" rel="noopener">https://www.jianshu.com/p/225de436d93c</a><br><a id="more"></a><br>1<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">          Looper.prepare(); <span class="comment">//获取当前线程的Looper，并prepare();</span></span><br><span class="line">          mHandler = <span class="keyword">new</span> Handler() &#123;           </span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">//do someting          </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          mHandler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">          Looper.loop(); <span class="comment">//looper开始处理消息。</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;.start();</span><br></pre></td></tr></table></figure><br>2<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Thread()&#123;   </span><br><span class="line">      <span class="meta">@Override</span>    </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;        </span><br><span class="line">         mHandler = <span class="keyword">new</span> Handler(getMainLooper()) &#123; <span class="comment">//直接使用主线程的Looper</span></span><br><span class="line">              <span class="meta">@Override</span>          </span><br><span class="line">              <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;                </span><br><span class="line">                  <span class="comment">//do something           </span></span><br><span class="line">              &#125;        </span><br><span class="line">          &#125;;        </span><br><span class="line">          mHandler.sendEmptyMessage(<span class="number">0</span>);   </span><br><span class="line">     &#125;</span><br><span class="line">&#125;.start();</span><br></pre></td></tr></table></figure></p>
 <p>3.ANR怎么发生，如何解决</p>
 <p>4.JVM垃圾回收机制</p>
 <p>5.数据库事务，范式</p>
 <p>6.网络分层，HTTPS</p>
 <p>7.TCP为什么是三次握手，不是两次或者四次5</p>
 <p>8.什么是死锁，银行家算法</p>
+<p>死锁（Deadlock）是指多个进程在运行过程中因争夺资源而造成的一种僵局。</p>
+<p>死锁发生必须具备四个条件：1.互斥条件。2.请求和保持条件。3.不剥夺条件。4.环路等待条件。</p>
 <p>9.算法。A数组元素不同，计算B数组中元素属于A的个数。A和B数据量很大，设计算法复杂度低的算法。算法的时间复杂度是多少</p>
 <h3><span id="同花顺">同花顺</span></h3><p>1.ArrayList内部实现原理，添加一个元素的原理，如何扩增</p>
 <p>2.HashMap原理，如何实现HashMap有序</p>
@@ -431,19 +432,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
             
             <div class="clearfix"></div>
